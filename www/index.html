@@ -1,43 +1,439 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Biofriendly</title>
+	<link rel="stylesheet" href="components/lungo/lungo.css">
+	<link rel="stylesheet" href="components/lungo/lungo.icon.css">
+	<link rel="stylesheet" href="components/lungo/lungo.theme.css">
+	<link rel="stylesheet" href="components/app/main.css">
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+</head>
+
+<body>
+
+	<section id="main_section" data-aside="secciones" data-transition="fade" class="drag">
+	    <header data-title="Biofriendly">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="main-article" class="active indented">
+	        
+	    </article>
+	</section>
+
+	<section id="login" data-transition="fade">
+	    <header data-title="Biofriendly - Accede a tu cuenta">
+	    </header>
+	    <article id="login-article" class="active indented">
+	        <form id="loginform">
+                <fieldset>
+	                <label for="user">
+	                    Correo:
+	                </label>
+	                <input type="email" name="user" id="user" class="text" value="" />
+            	</fieldset>
+            	<fieldset>
+	                <label for="password">
+	                    Contraseña:
+	                </label>
+	                <input type="password" name="password" id="password" value="" />
+	            </fieldset>
+
+	            <div class="margintopbottom">
+                	<button type="submit" class="center" id="sendLogin">Acceder</button>
+
+                </div>
+
+
+	            <div class="center-text">
+	                <a data-router="registro" id="registrarse">¿No tienes una cuenta?</a><br><br>
+	                <a data-router="recuperar" id="recuperarPass">¿Olvidaste tu contraseña?</a>
+	            </div>
+
+            </form>
+
+	    </article>
+	</section>
+
+	<section id="recuperar" data-transition="fade">
+		<header data-title="Recuperar Contraseña">
+			<button data-view-section="back" data-icon="chevron-left"></button>
+		</header>
+		<article id="recuperar-article" class="active indented">
+			<form id="recuperarpass">
+				<p>Para recuperar tu contraseña, simplemente indicanos tu correo electrónico para enviarte las instrucciones para recuperarla</p><br><br>
+				<fieldset>
+					<label for="emailrecuperar">
+						Email:
+					</label>
+					<input type="text" name="emailrecuperar" id="emailrecuperar" />
+				</fieldset>
+
+				<div class="margintopbottom">
+                	<button type="submit" id="submitRecuperar">Recuperar Contraseña</button>
+                </div>
+            </form>
+        </article>
+    </section>
+
+	<section id="registro" data-transition="fade">
+	    <header data-title="Biofriendly - Registrate">
+	            <button data-view-section="back" data-icon="chevron-left"></button>
+	    </header>
+	    <article id="registro-article" class="active indented">
+	        <form id="register">
+                <fieldset>
+	                <label for="nameuser">
+	                    Nombre:
+	                </label>
+	                <input type="text" name="nameuser" id="nameuser" value="" required="" />
+	            </fieldset>
+                <fieldset>
+                    <label for="password">
+                        Contraseña:
+                    </label>
+                    <input type="password" name="password" id="password" value="" required="" />
+                </fieldset>
+
+                <fieldset>
+                    <label for="email">
+                        Correo Electrónico:
+                    </label>
+                    <input type="email" name="email" id="email" placeholder="Este será tu usuario" value="" required="" />
+                </fieldset>
+
+                <fieldset>
+                    <label for="cellphone">
+                        Celular:
+                    </label>
+                    <input type="text" name="cellphone" id="cellphone" value="" required="" />
+                </fieldset>
+
+                <fieldset>
+                    <label for="cilindraje">
+                        Cilindraje:
+                    </label>
+                    <input type="text" name="cilindraje" id="cilindraje" value="" required="" />
+                </fieldset>
+
+                <div class="margintopbottom">
+                	<button type="submit" id="submitForm">Registrarse</button>
+                </div>
+            </form>
+	    </article>
+	</section>
+
+	<section id="tips" data-transition="fade" data-aside="secciones" class="drag">
+	    <header data-title="Tips">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="tipsSection" class="active list feedReader">
+	        <a class="twitter-timeline"  href="https://twitter.com/BiofriendlyMx"  data-widget-id="391979097380761600">Tweets por @BiofriendlyMx</a>
+	    </article>
+	</section>
+
+	<section id="noticias" data-transition="fade" data-aside="secciones" class="drag">
+	    <header data-title="Noticias">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="noticiasSection" class="active list feedReader scroll">
+	        <ul id="listviewNoticias" class="feedList">
+	        </ul>
+	    </article>
+	</section>
+
+	<section id="cerca" data-transition="fade" data-aside="secciones">
+	    <header data-title="Cerca">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="cercaSection" class="active indented list">
+	        <div id="resultCerca">
+                <h3>
+                    Mi punto más cercano es:
+                </h3>
+                <p id="nombreCercano">
+                </p>
             </div>
-        </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+            <div id="map_canvas"></div>
+	    </article>
+	</section>
+
+	<section id="comparte" data-transition="fade" data-aside="secciones" class="drag">
+		    <header data-title="Selecciona tu frase">
+		        <nav>
+		            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+		        </nav>
+		    </header>
+		    <article id="retoSection" class="active indented list">
+		    	<div class="form">
+		    		<fieldset class="margintopbottom">
+				        <select id="fraseShare">
+		                    <option value="0">
+		                        Yo cuido el planeta y consumo #Biofriendly
+		                    </option>
+		                    <option value="1">
+		                        Me preocupo por mi planeta y consumo #Biofriendly
+		                    </option>
+		                    <option value="2">
+		                        Otro
+		                    </option>
+		                </select>
+	                <div class="hideShare">
+	                    <input id="textoPersonal" type="text" placeholder="Inserta aquí tu frase a compartir">
+	                </div>
+	                </fieldset>
+	                <div id="shareContainer" class="center">
+	                    <div id="TwitterShare" class="buttonShare"></div>
+	                    <div id="FaceShare" class="buttonShare"></div>
+	                </div>
+	           	</div>
+		    </article>
+	</section>
+
+	<section id="directorio" data-transition="fade" data-aside="secciones" class="drag">
+	    <header data-title="Directorio">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="retoSection" class="active indented list">
+	        <ul>
+	        	<li info="Chihuahua" data-view-section="listaSucursales">
+	        		<strong>
+	        		Chihuahua
+	        		</strong>
+	        	</li>
+	        	<li info="Jalisco" data-view-section="listaSucursales">
+	        		<strong>
+	        		Jalisco
+	        		</strong>
+	        	</li>
+	        </ul>
+	    </article>
+	</section>
+
+	<section id="listaSucursales" data-transition="fade" data-aside="secciones" class="drag">
+	    <header data-title="Directorio">
+	        <nav>
+	            <a href="#" data-view-section="back" data-icon="arrow-left"></a>
+	        </nav>
+	    </header>
+	    <article id="listaSection" class="active indented list scroll">
+	        <ul id="listaUl">
+	        	
+	        </ul>
+	    </article>
+	</section>
+
+	<section id="reto" data-transition="fade" data-aside="secciones" class="drag">
+	    <header data-title="Reto Biofriendly">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="retoSection" class="active indented list">
+	    	<div id="statusReto">
+		        <ul>
+		        	<li data-view-section="retoAntes">
+		        		<div class="on-right" id="retoAntesLink"><span class="icon remove-sign"></span></div>
+		        		<strong>
+		        			Antes de usar Biofriendly
+		        		</strong>
+		        	</li>
+		        	<li data-view-section="retoDespues">
+		        		<div class="on-right" id="retoDespuesLink"><span class="icon remove-sign"></span></div>
+		        		<strong>
+		        			Después de usar Biofriendly
+		        		</strong>
+		        	</li>
+
+		        	<li id="resultadosReto">
+		        		<h1>Resultados:</h1>
+		        		<strong>
+		        			Debes terminar el reto para ver el resultado
+		        		</strong>
+		        	</li>
+		        </ul>
+
+		    </div>
+	    </article>
+	</section>
+
+	<section id="retoAntes" data-transition="fade" data-aside="secciones" class="drag">
+	    <header data-title="Antes del Reto Biofriendly">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="retoSection" class="active indented">
+	        <form class="form" id="antesBiof">
+	        	<fieldset>
+	        		<label>KM inicial sin Biofriendly</label>
+	        		<input type="text" id="kminisin" placeholder="Ej. 35000">
+	        	</fieldset>
+	        	<fieldset>
+	        		<label>Litros de combustible cargados</label>
+	        		<input type="text" id="ltssin" placeholder="Ej. 20">
+	 			</fieldset>
+	 			<fieldset>
+	        		<label>KM final sin Biofriendly</label>
+	        		<input type="text" id="kmfinsin" placeholder="Ej. 35200">
+	 			</fieldset>
+	 			<button type="submit" name="submit" id="saveAntesBiof" class="centered" value="Guardar">Guardar</button>
+	        </form>
+	    </article>
+	</section>
+
+	<section id="retoDespues" data-transition="fade" data-aside="secciones" class="drag">
+	    <header data-title="Después del Reto Biofriendly">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="retoSection" class="active indented list">
+	        <form class="form" id="despuesBiof">
+	        	<fieldset>
+	        		<label>KM inicial con Biofriendly</label>
+	        		<input type="text" id="kminicon" placeholder="Ej. 35000">
+	        	</fieldset>
+	        	<fieldset>
+	        		<label>Litros de combustible cargados</label>
+	        		<input type="text" id="ltscon" placeholder="Ej. 20">
+	 			</fieldset>
+	 			<fieldset>
+	        		<label>KM final con Biofriendly</label>
+	        		<input type="text" id="kmfincon" placeholder="Ej. 35200">
+	 			</fieldset>
+	 				<button type="submit" name="submit" class="centered" value="Guardar">Guardar</button>
+	        </form>
+	    </article>
+	</section>
+
+	<section id="aviso" data-transition="fade" data-aside="secciones" class="drag">
+	    <header data-title="Aviso de Privacidad">
+	        <nav>
+	            <a href="#" data-view-aside="secciones" data-icon="menu"></a>
+	        </nav>
+	    </header>
+	    <article id="avisoSection" class="active scroll indenteds">
+	        <div>
+	        	<p>ITI EVENTS SAPI DE CV con domicilio en Trebol, 9, Enrique Rodriguez Cano, Tuxpan De Rodriguez Cano, Veracruz, C.P. 92880 es responsable de recabar sus datos personales, del uso que se le de a los mismos así como de su protección.</p>
+
+				<p>Recabamos sus datos personales de forma directa cuando usted mismo nos los proporciona por diversos medios, como: sistemas de información y registro, atención telefónica, sistemas de contabilidad, sistemas de acreditaciones y eventos, formas de atención al cliente, ordenes de compra, cotizaciones, facturas venta, de servicios y productos.</p>
+
+				<p>Sus datos personales serán utilizados para las siguientes finalidades: para servicios y productos solicitados, informarle sobre nuevos productos, servicios o cambios en los mismos, mensajes promocionales y evaluar la calidad del servicio que le brindamos.</p>
+
+				<p>Para las finalidades señaladas en el presente aviso de privacidad, podemos recabar sus datos personales como: Nombre. Apellido Paterno. Apellido Materno. Teléfono. Celular. E-mail. RFC. Edad. Sexo. CURP. Dirección completa. Claves de Usuario y Contraseña de los Sistemas Electrónicos bajo los dominios en Internet; itievent.net e itievents.com</p>
+
+				<p>Le informamos que para cumplir con las finalidades previstas en este aviso de privacidad, NO serán recabados y tratados datos personales sensibles, como aquéllos que refieren a información financiera básica.</p>
+
+				<p>Usted tiene derecho de acceder, rectificar y cancelar sus datos personales, así como de oponerse al tratamiento de los mismos o revocar el consentimiento que para tal fin nos haya otorgado, a través de los procedimientos que hemos implementado. Para conocer dichos procedimientos, los requisitos y plazos, se puede poner en contacto con nuestro departamento de datos personales en Trebol, 9, Enrique Rodriguez Cano, Tuxpan De Rodriguez Cano, Veracruz, C.P. 92880, al teléfono +52 (33) 3330 7617 o al correo electrónico info@itievents.com, o visitar nuestra página de Internet www.itievents.com.</p>
+
+				<p>Así mismo, le informamos que sus datos personales pueden ser transferidos y tratados dentro y fuera del país, por personas distintas a esta empresa. En ese sentido, su información puede ser compartida, le informamos que debido a que la venta, distribución y soporte de nuestros productos y servicios se hace en conjunto con nuestros socios de negocio, sus datos personales pudieran ser transferidos a alguno de ellos para servicios y productos solicitados, informarle sobre nuevos productos, servicios o cambios en los mismos, mensajes promocionales y evaluar la calidad del servicio que le brindamos.</p>
+
+				<p>Si usted no manifiesta su oposición para que sus datos personales sean transferidos, se entenderá que ha otorgado su consentimiento para ello.</p>
+
+				<p>Si usted desea dejar de recibir mensajes promocionales de nuestra parte, puede solicitarlo a través del teléfono +52 (33) 3330 7617 o al correo electrónico info@itievents.com, o en el siguiente domicilio Trebol, 9, Enrique Rodriguez Cano, Tuxpan De Rodriguez Cano, Veracruz, C.P. 92880.</p>
+
+				<p>Cualquier modificación a este aviso de privacidad podrá consultarla en www.itievents.com</p>
+
+				<p><strong>Fecha última actualización Julio 1, 2013, 09:00 hrs</strong></p>
+	        </div>
+	    </article>
+	</section>
+
+	<aside id="secciones" class="show" data-transition="left">
+	    <header data-title="Navegación"></header>
+	    <article class="list scroll active">
+	        <ul>
+	        	<li class="active">
+	        		<strong>
+	        			Productos
+	        		</strong>
+	        	</li>
+	        	<li data-icon="trophy" data-view-section="reto">
+	        		<strong>
+	        			Reto Biofriendly
+	        		</strong>
+	        	</li>
+	        	<!--
+	        	<li data-icon="list">
+	        		<strong>
+	        			Registro de productos
+	        		</strong>
+	        	</li>
+	        	-->
+	        	<li class="active">
+	        		<strong>
+	        			Adquiere
+	        		</strong>
+	        	</li>
+	        	<li data-icon="globe" data-view-section="directorio">
+	        		<strong>
+	        			Directorio
+	        		</strong>
+	        	</li>
+	        	<li data-icon="map-marker" data-view-section="cerca">
+	        		<strong>
+	        			Cerca de mi
+	        		</strong>
+	        	</li>
+	        	<li class="active">
+	        		<strong>
+	        			Descubre
+	        		</strong>
+	        	</li>
+	        	<li data-icon="share" data-view-section="comparte">
+	        		<strong>
+	        			Comparte
+	        		</strong>
+	        	</li>
+	        	<li data-icon="quote-left" data-view-section="tips">
+	        		<strong>
+	        			Tips
+	        		</strong>
+	        	</li>
+	        	<li data-icon="comment" data-view-section="noticias">
+	        		<strong>
+	        			Noticias
+	        		</strong>
+	        	</li>
+	        	<li class="active">
+	        		<strong>
+	        			Legal
+	        		</strong>
+	        	</li>
+	        	<li data-icon="leaf" data-view-section="aviso">
+	        		<strong>
+	        			Aviso de Privacidad
+	        		</strong>
+	        	</li>
+	        	<li class="active">
+	        		<strong>
+	        			Usuario
+	        		</strong>
+	        	</li>
+	        	<li data-icon="signout" data-view-section="login" id="cerrarSesion">
+	        		<strong>
+	        			Cerrar sesión
+	        		</strong>
+	        	</li>
+	        </ul>
+	    </article>
+	</aside> 
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="components/quojs/quo.js"></script>
+	<script src="components/lungo/lungo.js"></script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<script src="components/app/main.js"></script>
+</body>
 </html>
