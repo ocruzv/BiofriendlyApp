@@ -22,7 +22,7 @@
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="false" />
-    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="show-splash-screen-spinner" value="false" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
@@ -31,6 +31,7 @@
     <content src="index.html" />
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
     <icon src="icon.png" />
 
     <icon src="res/icons/android/icon-36-ldpi.png" gap:platform="android" gap:density="ldpi" />
@@ -44,5 +45,7 @@
 
     <!-- retina iPad support: PhoneGap 2.5.0+ only -->
     <icon src="icons/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144" />
+
+    <gap:splash src="res/splash/windows-phone/splash.jpg" gap:platform="winphone" />
 
 </widget>
