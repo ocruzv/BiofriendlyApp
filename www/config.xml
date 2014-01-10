@@ -9,6 +9,7 @@
     </author>
     <gap:platform name="ios" />
     <gap:platform name="android" />
+    <gap:platform name="winphone" />
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
